@@ -1,0 +1,97 @@
+-gallery_photos = [{image:"carne.jpg"}, {image:"plato.jpg"},{image:"cocina.jpg"},{image:"fondo.jpg"},{image:"chorizo.jpg"}]
+!!!5
+%html{class:"no-js",lang:"es"}
+	%head
+		%meta{charset:"UTF-8"}
+		%title Expertos en arquitectura y construccion
+		%meta{name:"description", content:"por si alguien nos busca"}
+		%link{rel:"stylesheet", href:"css/normalize.css"}
+		%link{rel:"stylesheet", href:"css/bootstrap.css"}
+		%link{rel:"stylesheet", href:"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"}
+		%link{rel:"stylesheet", href:"css/flexboxgrid.css"}
+		%link{rel:"stylesheet", href:"css/style.css"}
+		%link{href:"https://fonts.googleapis.com/css?family=Dancing+Script&display=swap",rel:"stylesheet"}
+		%meta{name:"viewport", content:"width=device-width,initial-scale=1"}
+		%meta{:"data-name" => "image-counter", content:"#{gallery_photos.size-1}"}
+		%script{src:"js/vendor/modernizr-2.8.3.min.js"}
+	%body
+		="<!--[if lt IE 9]>"
+		%p{class:"browserupgrade"}
+			Estas usando un navegador
+			%strong desactualizado
+			por favor
+			%a{href:"http://browsehappy.com/"}
+				actualiza tu navegador
+			para una mejor experiencia!!
+		="<![endif]-->"
+		.image-container
+			%img{src:"/imgs/fondo.jpg"}
+		.row.full-height.middle-xs.center-xs.relative.up
+			.col-xs-12
+				.box.white-text
+					%img{src:"/imgs/logo-carne3.png", width:500}
+					%h1.white-text.title.no-margin
+					%p
+			%nav.fixed.top.right.white-text.navigation#navigation
+				-menu=["Inicio","Nosotros","Menú","Contacto"]
+				%ul.list-inline
+					-menu.each do |item|
+						%li.list-inline-item
+							%a(href="#")=item
+			.absolute.black.large-padding.white-text.full-width.middle-xs#description
+				.row.center-xs.middle-xs
+					.col-xs-7.col-sm-6.white-text.medium
+						Comida creada por artistas de la cocina
+					.col-xs#sticky-navigation
+						.box
+							%nav.text-right.navigation#responsive-nav
+								%i.glyphicon.glyphicon-menu-hamburger.white-text.subtitle#menu-opener
+								%ul.list-inline
+									-menu.each do |item|
+										%li.list-inline-item
+											%a(href="#")=item
+		.text-center.relative#menu
+			.absolute.white#menu-title
+				%h2.subtitle.dancing-script Menú
+			-menu_photos = [{title:"Lomito",price:"Q50.00",image:"carne1.jpg",description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa"}, {title:"Carne a la parrilla",price:"Q40.00",image:"carne2.jpg",description:"minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumx."},{title:"Remodelación",price:"Q45.00",image:"chorizo.jpg",description:"Lorem ipsum dolor sit amet consectetur adipiscing eli sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa"},{title:"Tablayeso",price:"Q55.00",image:"hamburguesa.jpg",description:"am aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit "},{title:"Pintura",price:"Q35.00",image:"carne1.jpg",description:"minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exc"},{title:"Electricidad",price:"Q70.00",image:"carne1.jpg",description:"minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exc"},{title:"Instalación de pisos",price:"Q50.00",image:"carne2.jpg",description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa"},{title:"Acabados especiales",price:"Q25.00",image:"hamburguesa.jpg",description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequa"}]
+			.row
+				-menu_photos.each do |photo|
+					.col-md-4.col-lg-3.col-sm-6.col-xs-12.service{style:"background-image:url(/imgs/#{photo[:image]})"}
+						.screen
+							.row.middle-xs.full-height
+								.col-xs-12
+									%h3.white-text.big-text.dancing-script= photo[:title]
+									%h4.white-text.medium= photo[:price]
+									%p.white-text.small.especial-padding= photo[:description]
+		#gallery
+			.inner
+				-gallery_photos.each do |photo|
+					.image{style:"background-image:url(/imgs/#{photo[:image]});"}
+		.container
+			.card.white.black-text.text-center.relative
+				%h3.medium.slim
+					En
+					%strong.medium.dancing-script La Parrillada nuestra misión es
+					Satisfacer las necesidades gastronómicas de nuestros clientes, ofreciendo alimentos y servicios con la más alta calidad, donde se sobrepasen las expectativas de nuestros clientes y ser un espacio de trabajo que permita la realización personal y el Desarrollo de sus colaboradores en el grupo.
+				%h3.medium.slim
+		.row.full-height.center-xs.middle-xs.white-text.blue
+			.col-xs-12
+				.box
+					%h1.dancing-script Contacto
+					%p.medium 20 calle 26-30 zona 1, Edificio el buen sabor, local No. 5
+					%p.medium Tel. 5066 - 9271
+		.row.black.white-text.big-padding.center-xs.subtitle
+			.col-xs-12
+				.box.large-padding
+					%h5 Siguenos en:
+					%a{:href => "#", target:"_blank"}
+						%i.fa.fa-facebook-official
+					%a{:href => "#", target:"_blank"}
+						%i.fa.fa-instagram
+
+		%script{src:"https://code.jquery.com/jquery-3.4.1.min.js",
+  				integrity:"sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=",
+  				crossorigin:"anonymous"}
+		%script
+			window.jQuery || document.write("<script src='/js/vendor/jquery-3.3.1.min.js'><\/script>")
+		%script{src:"./js/main.js"}
